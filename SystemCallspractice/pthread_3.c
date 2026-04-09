@@ -1,0 +1,35 @@
+# include <stdio.h>
+# include <pthread.h>
+
+
+void * Demo ( void *p )      // returns void * accepts void * 
+{
+    printf(" inside thread \n") ;
+
+    return NULL ;
+}
+
+int main ()
+{
+
+  pthread_t TID ;
+  int iRet = 0 ; 
+
+  printf("main thread started\n") ;
+  iRet = pthread_create(                                              // thread got created and in run mode 
+                           &TID  ,    // thread id 
+                           NULL ,    // thread attributes 
+                           Demo ,     // thread call back function 
+                           NULL      // parameters for the call back functions 
+    ) ; 
+
+    if ( iRet == 0 )
+    {
+        printf("thread gets created sucessfully \n") ;
+    }
+
+    
+    printf(" end of main thread\n") ;
+
+    return 0 ; 
+}
